@@ -5,7 +5,7 @@ FROM node:latest
 WORKDIR /app
 
 # Копирование package.json и package-lock.json для установки зависимостей
-COPY package*.json ./
+COPY package.json ./
 
 # Установка зависимостей
 RUN npm install
@@ -13,5 +13,7 @@ RUN npm install
 # Копирование файлов проекта
 COPY . .
 
+RUN npm run build
+
 # Установка команды для запуска приложения
-CMD ["npm", "run", "dev"]
+CMD ["npm","run", "start"]
